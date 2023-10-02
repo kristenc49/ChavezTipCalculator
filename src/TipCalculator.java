@@ -1,8 +1,8 @@
-import java.util.Objects;
+import java.util.Objects; // for the freestyle feature
 import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
 public class TipCalculator {
+
+    // greeting the user + getting the number of ppl + the tip percentage
     public static void main(String[] args) {
     Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to the Tip Calculator! ");
@@ -11,8 +11,7 @@ public class TipCalculator {
         System.out.print("What percentage would you like to tip? (0-100): ");
         int percentTip = scan.nextInt();
 
-       // System.out.print("Enter a cost in dollars and cents, e.g 12.50 (When finished, enter -1):");
-        List items = new ArrayList();
+       // this code is the while loop that lets the user enter their costs
         double totalCost = 0;
         double number = 2;
         while (number != -1) {
@@ -21,13 +20,15 @@ public class TipCalculator {
             number = scan.nextDouble();
             totalCost += number;
         }
-        totalCost++;
-        System.out.println("------------------------------------");
-        System.out.println("Total bill before tip: $" + totalCost);
+        totalCost++; // removes the 1 so that it's not included in the total
 
+        System.out.println("------------------------------------");
+
+        // the code below prints the price summaries for the user
+        System.out.println("Total bill before tip: $" + totalCost);
         System.out.println("Total percentage: " + percentTip + "%");
 
-        // find out how to round everything below
+        // rounding with math.round
         double totalTip = (double) Math.round((((double)percentTip/100) * totalCost) * 100) / 100;
         System.out.println("Total tip: $" + totalTip);
 
@@ -43,17 +44,17 @@ public class TipCalculator {
         double totalCostPerPerson = (double) Math.round((totalBillWithTip / ppl) * 100) / 100;
         System.out.println("Total cost per person: $" + totalCostPerPerson);
 
-        Scanner scan2 = new Scanner(System.in);
+        // freestyle: note feature
+        Scanner scan2 = new Scanner(System.in); // scanner was having issues so I made a new one
         System.out.print("Would you like to leave a note? (yes/no): ");
         String noteYN = scan2.nextLine();
         if (Objects.equals(noteYN, "yes")) {
-            System.out.print("Enter your note:");
+            System.out.print("Enter your note: ");
             String note = scan2.nextLine();
             System.out.println("Note from customer: " + note);
         } else {
 
         }
-
         System.out.println("------------------------------------");
     }
 }
